@@ -8,7 +8,7 @@ namespace Cassette.Stylesheets
     class CssFontToDataUriTransformer : CssUrlToDataUriTransformer
     {
         static readonly Regex UrlRegex = new Regex(
-            @"\b url \s* \( \s* (?<quote>[""']?) (?<path>.*?)\.(?<extension>ttf|otf) \<quote> \s* \)",
+            @"\b url \s* \( \s* (?<quote>[""']?) (?<path>.*?)\.(?<extension>ttf|otf) \k<quote> \s* \)",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase
         );
 

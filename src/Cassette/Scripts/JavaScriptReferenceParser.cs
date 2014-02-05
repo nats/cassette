@@ -8,7 +8,7 @@ namespace Cassette.Scripts
     class JavaScriptReferenceParser : ReferenceParser
     {
         static readonly Regex ReferenceRegex = new Regex(
-            @"\<reference \s+ path \s* = \s* (?<quote>[""']) (?<path>.*?) \<quote> \s* /?>",
+            @"\<reference \s+ path \s* = \s* (?<quote>[""']) (?<path>.*?) \k<quote> \s* /?>",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase
             );
 
