@@ -52,7 +52,7 @@ namespace Cassette.Aspnet
             var hash = fileContentHasher.Hash(path).ToHexString();
             var actualETag = "\"" + hash + "\"";
 
-            if (request.PathInfo.Contains(hash))
+            if (request.RawUrl.Contains(hash))
             {
                 SetFarFutureExpiresHeader(context.Response, actualETag);
             }
@@ -99,7 +99,7 @@ namespace Cassette.Aspnet
 
         bool TryGetFilePath(out string path)
         {
-            var match = Regex.Match(request.PathInfo, "/file/(.*)", RegexOptions.IgnoreCase);
+            var match = Regex.Match(request.RawUrl, "/file/(.*)", RegexOptions.IgnoreCase);
             if (match.Success)
             {
                 path = match.Groups[1].Value;
