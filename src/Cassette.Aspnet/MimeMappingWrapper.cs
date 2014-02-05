@@ -8,20 +8,6 @@ namespace Cassette.Aspnet
 	/// </summary>
 	public class MimeMappingWrapper
 	{
-		readonly MethodInfo mimeMappingMethod;
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MimeMappingWrapper"/> class.
-		/// </summary>
-		public MimeMappingWrapper()
-		{
-			// MimeMapping is internal to System.Web so we need to get it via reflection
-			// http://stackoverflow.com/a/1302366/210370
-			var assembly = Assembly.GetAssembly(typeof(HttpApplication));
-			var type = assembly.GetType("System.Web.MimeMapping");
-			mimeMappingMethod = type.GetMethod("GetMimeMapping", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-		}
-
 		/// <summary>
 		/// Gets the MIME type of the specified file.
 		/// </summary>
@@ -36,7 +22,7 @@ namespace Cassette.Aspnet
 				case ".png":
 					return "image/png";
 				default:
-					return (string)mimeMappingMethod.Invoke(null, new[] { fileName });
+			        return MimeMapping.GetMimeMapping(fileName);
 			}
 			
 		}

@@ -83,6 +83,7 @@
     <Compile Include="ICassetteRequestHandler.cs" />
     <Compile Include="IDiagnosticRequestHandler.cs" />
     <Compile Include="ContentTypes.cs" />
+    <Compile Include="MimeMapping.cs" />
     <Compile Include="MimeMappingWrapper.cs" />
     <Compile Include="RawFileRequestRewriter.cs" />
     <Compile Include="TrustLevel.cs" />
